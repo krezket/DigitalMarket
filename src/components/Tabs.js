@@ -22,13 +22,13 @@ const Tabs = () => {
                 headerTitleStyle: {
                     fontWeight: 'bold',
                     fontSize: 25,
-                    color: 'tomato'
+                    color: 'red'
                 }
             }}
         >
 
             <Tab.Screen
-                name={'current'}
+                name={'Home'}
                 component={CurrentWeather}
                 options={{
                     tabBarIcon: ({ focused }) => (
@@ -42,12 +42,12 @@ const Tabs = () => {
             />
 
             <Tab.Screen
-                name={'upcoming'}
+                name={'Search'}
                 component={UpcomingWeather}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Feather
-                            name={'list'}
+                            name={'search'}
                             size={24}
                             color={focused ? 'tomato' : 'gray'}
                         />
@@ -56,12 +56,12 @@ const Tabs = () => {
             />
 
             <Tab.Screen
-                name={'city'}
+                name={'Account'}
                 component={City}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Feather
-                            name={'search'}
+                            name={'user'}
                             size={24}
                             color={focused ? 'tomato' : 'gray'}
                         />
