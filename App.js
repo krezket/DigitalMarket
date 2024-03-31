@@ -3,7 +3,7 @@ import { View, ActivityIndicator, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import Tabs from "./src/components/Tabs";
 import * as Location from 'expo-location';
-import { TEST_KEY } from './.env';
+import { TEST_KEY } from '@env';
 
 // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
@@ -11,7 +11,7 @@ const App = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [location, setLocation] = useState(null);
     const [errorMsg, setErrorMsg] = useState(null);
-
+    console.log(TEST_KEY);
     useEffect(() => {
         (async() => {
             let { status } = await Location.requestForegroundPermissionsAsync();
