@@ -1,6 +1,6 @@
 import React from "react";
 import { SafeAreaView, View, StyleSheet, Text, FlatList, StatusBar, ImageBackground } from "react-native";
-import { Feather } from '@expo/vector-icons';
+import ListItem from "../components/ListItem";
 
 const DATA = [
   {
@@ -16,25 +16,17 @@ const DATA = [
     title: 'Third Item',
   },
 ];
-const Item = (props) => {
-  const { id, title } = props;
-  return (
-    <View style={styles.item}>
-      <Feather name="sun" size={50} color="yellow" />
-      <Text>{id}</Text>
-      <Text>{title}</Text>
-    </View>
-  )
-}
+
 const UpcomingWeather = () => {
   const renderItem = ({ item }) => (
-    <Item id={item.id} title={item.title} />
+    <ListItem id={item.id} title={item.title} />
   )
   return (
     <SafeAreaView style={styles.container}>
-      <ImageBackground>
-        source={require('../../assets/gifs/neutron.gif')}
+      <ImageBackground
+        source={require('../../assets/gifs/wizard.gif')}
         style={styles.image}
+      >
         <Text>Upcoming Weather</Text>
         <FlatList
           data={DATA}
@@ -63,8 +55,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'pink'
   },
   image: {
-    width: 100,
-    height: 100,
+    flex: 1
   }
 })
 export default UpcomingWeather;
