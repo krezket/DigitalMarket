@@ -3,6 +3,7 @@ import { View, ActivityIndicator, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import Tabs from "./src/components/Tabs";
 import * as Location from 'expo-location';
+import { TEST_KEY } from '@env';
 
 // api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
@@ -18,14 +19,23 @@ const App = () => {
                 setErrorMsg('Permission to access location was denied');
                 return;
             }
-            let location = await Location.getCurrentPositionAsync({});
-            setLocation(location);
-        }) 
+            try {
+                let location = await Location.getCurrentPositionAsync({});
+                setLocation(location);
+            } catch (error) {
+                console.error("Error getting location:", error);
+                setErrorMsg("Error getting location");
+            }
+        })()
     }, [])
 
-    if (location) {
-        console.log(location);
-    }
+    useEffect(() => {
+        if (location) {
+            console.log(location);
+        } else {
+            console.log("Location not found");
+        }
+    }, [location])
 
     if (isLoading) {
         return (
