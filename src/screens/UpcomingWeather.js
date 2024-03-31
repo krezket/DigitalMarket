@@ -20,12 +20,13 @@ const DATA = [
 const UpcomingWeather = () => {
   const renderItem = ({ item }) => (
     <ListItem id={item.id} title={item.title} />
-  )
+    )
+  const { container, image } = styles;
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={container}>
       <ImageBackground
         source={require('../../assets/gifs/wizard.gif')}
-        style={styles.image}
+        style={image}
       >
         <Text>Upcoming Weather</Text>
         <FlatList
@@ -43,16 +44,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
     backgroundColor: 'white',
-  },
-  item: {
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    borderWidth: 5,
-    backgroundColor: 'pink'
   },
   image: {
     flex: 1

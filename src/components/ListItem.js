@@ -5,8 +5,9 @@ import { Feather } from '@expo/vector-icons';
 
 const ListItem = (props) => {
     const { id, title } = props;
+    const { item } = styles;
     return (
-      <View style={styles.item}>
+      <View style={item}>
         <Feather name="sun" size={50} color="yellow" />
         <Text>{id}</Text>
         <Text>{title}</Text>
