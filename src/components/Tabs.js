@@ -1,13 +1,12 @@
-import React from "react";
-import CurrentWeather from "../screens/CurrentWeather"
-import UpcomingWeather from "../screens/UpcomingWeather";
-import City from "../screens/City";
+import Home from "../screens/Home";
+import Search from "../screens/Search";
+import Account from "../screens/Account";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
-const Tabs = ({ weather }) => {
+const Tabs = () => {
     return (
         <Tab.Navigator
             screenOptions={{
@@ -26,40 +25,9 @@ const Tabs = ({ weather }) => {
                 }
             }}
         >
-
             <Tab.Screen
-                name={'Current'}
-                options={{
-                    tabBarIcon: ({ focused }) => (
-                        <Feather
-                            name={'droplet'}
-                            size={24}
-                            color={focused ? 'tomato' : 'gray'}
-                        />
-                    )
-                }}
-            >
-                {() => <CurrentWeather weatherData={weather.list[0]} />}
-            </Tab.Screen>
-
-            <Tab.Screen
-                name={'Upcoming'}
-                options={{
-                    tabBarIcon: ({ focused }) => (
-                        <Feather
-                            name={'clock'}
-                            size={24}
-                            color={focused ? 'tomato' : 'gray'}
-                        />
-                    )
-                }}
-            >
-            {() => <UpcomingWeather weatherData={weather.list} />}
-            </Tab.Screen>
-
-
-            <Tab.Screen
-                name={'City'}
+                name="Home"
+                component={Home}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Feather
@@ -69,12 +37,38 @@ const Tabs = ({ weather }) => {
                         />
                     )
                 }}
-            >
-                {() => <City weatherData={weather.city} />}
-            </Tab.Screen>
+            />
+
+            <Tab.Screen
+                name="Search"
+                component={Search}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <Feather
+                            name={'search'}
+                            size={24}
+                            color={focused ? 'tomato' : 'gray'}
+                        />
+                    )
+                }}
+            />
+
+            <Tab.Screen
+                name="Account"
+                component={Account}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <Feather
+                            name={'user'}
+                            size={24}
+                            color={focused ? 'tomato' : 'gray'}
+                        />
+                    )
+                }}
+            />
 
         </Tab.Navigator>
-    )
-}
+    );
+};
 
 export default Tabs;
