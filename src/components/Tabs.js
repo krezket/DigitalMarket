@@ -1,5 +1,6 @@
 import Home from "../screens/Home";
 import Search from "../screens/Search";
+import Notifications from "../screens/Notifications";
 import Account from "../screens/Account";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather } from "@expo/vector-icons";
@@ -10,7 +11,7 @@ const Tabs = () => {
     return (
         <Tab.Navigator
             screenOptions={{
-                tabBarActiveTintColor: 'tomato',
+                tabBarActiveTintColor: 'black',
                 tabBarInactiveTintColor: 'gray',
                 tabBarStyle: {
                     backgroundColor: 'white',
@@ -32,12 +33,13 @@ const Tabs = () => {
                     tabBarIcon: ({ focused }) => (
                         <Feather
                             name={'home'}
-                            size={24}
-                            color={focused ? 'tomato' : 'gray'}
+                            size={30}
+                            color={focused ? 'black' : 'gray'}
                         />
                     )
                 }}
             />
+
 
             <Tab.Screen
                 name="Search"
@@ -46,8 +48,22 @@ const Tabs = () => {
                     tabBarIcon: ({ focused }) => (
                         <Feather
                             name={'search'}
-                            size={24}
-                            color={focused ? 'tomato' : 'gray'}
+                            size={30}
+                            color={focused ? 'black' : 'gray'}
+                        />
+                    )
+                }}
+            />
+
+            <Tab.Screen
+                name="Notifications"
+                component={Notifications}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <Feather
+                            name={'bell'}
+                            size={30}
+                            color={focused ? 'black' : 'gray'}
                         />
                     )
                 }}
@@ -60,8 +76,8 @@ const Tabs = () => {
                     tabBarIcon: ({ focused }) => (
                         <Feather
                             name={'user'}
-                            size={24}
-                            color={focused ? 'tomato' : 'gray'}
+                            size={30}
+                            color={focused ? 'black' : 'gray'}
                         />
                     )
                 }}
