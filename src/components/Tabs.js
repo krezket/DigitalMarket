@@ -7,7 +7,7 @@ import { Feather } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
-const Tabs = () => {
+const Tabs = ({ weather }) => {
     return (
         <Tab.Navigator
             screenOptions={{
@@ -28,8 +28,38 @@ const Tabs = () => {
         >
 
             <Tab.Screen
-                name={'Home'}
-                component={CurrentWeather}
+                name={'Current'}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <Feather
+                            name={'droplet'}
+                            size={24}
+                            color={focused ? 'tomato' : 'gray'}
+                        />
+                    )
+                }}
+            >
+                {() => <CurrentWeather weatherData={weather.list[0]} />}
+            </Tab.Screen>
+
+            <Tab.Screen
+                name={'Upcoming'}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <Feather
+                            name={'clock'}
+                            size={24}
+                            color={focused ? 'tomato' : 'gray'}
+                        />
+                    )
+                }}
+            >
+            {() => <UpcomingWeather weatherData={weather.list} />}
+            </Tab.Screen>
+
+
+            <Tab.Screen
+                name={'City'}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Feather
@@ -39,35 +69,9 @@ const Tabs = () => {
                         />
                     )
                 }}
-            />
-
-            <Tab.Screen
-                name={'Search'}
-                component={UpcomingWeather}
-                options={{
-                    tabBarIcon: ({ focused }) => (
-                        <Feather
-                            name={'search'}
-                            size={24}
-                            color={focused ? 'tomato' : 'gray'}
-                        />
-                    )
-                }}
-            />
-
-            <Tab.Screen
-                name={'Account'}
-                component={City}
-                options={{
-                    tabBarIcon: ({ focused }) => (
-                        <Feather
-                            name={'user'}
-                            size={24}
-                            color={focused ? 'tomato' : 'gray'}
-                        />
-                    )
-                }}
-            />
+            >
+                {() => <City weatherData={weather.city} />}
+            </Tab.Screen>
 
         </Tab.Navigator>
     )

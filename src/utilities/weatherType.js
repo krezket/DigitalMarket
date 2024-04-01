@@ -26,7 +26,7 @@ export const weatherType = {
     },
     Clouds: {
         icon: 'cloud',
-        message: 'bruh',
+        message: 'It be cloudy out here',
         backgroundColor: '#363636'
     },
     Haze: {

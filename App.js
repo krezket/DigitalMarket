@@ -2,52 +2,36 @@ import React, { useState, useEffect } from "react";
 import { View, ActivityIndicator, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import Tabs from "./src/components/Tabs";
-import * as Location from 'expo-location';
-import { TEST_KEY } from '@env';
-
-// api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
+import Error from "./src/components/Error";
+import { useGetWeather } from "./src/hooks/useGetWeather";
 
 const App = () => {
-    const [isLoading, setIsLoading] = useState(true);
-    const [location, setLocation] = useState(null);
-    const [errorMsg, setErrorMsg] = useState(null);
-    console.log(TEST_KEY);
-    useEffect(() => {
-        (async() => {
-            let { status } = await Location.requestForegroundPermissionsAsync();
-            if (status !== 'granted') {
-                setErrorMsg('Permission to access location was denied');
-                return;
-            }
-            try {
-                let location = await Location.getCurrentPositionAsync({});
-                setLocation(location);
-            } catch (error) {
-                console.error("Error getting location:", error);
-                setErrorMsg("Error getting location");
-            }
-        })()
-    }, [])
+    const [isLoading, errorMsg, weather] = useGetWeather();
 
     useEffect(() => {
-        if (location) {
-            console.log(location);
+        if (weather) {
+            console.log(weather);
         } else {
-            console.log("Location not found");
+            console.log("Weather not found");
         }
-    }, [location])
+    }, [weather])
 
-    if (isLoading) {
+    if (weather && weather.list) {
         return (
-            <View style={styles.container}>
-                <ActivityIndicator size="large" color="tomato" />
-            </View>  
+            <NavigationContainer>
+                <Tabs weather={weather} />
+            </NavigationContainer>
         )
     }
+
     return (
-        <NavigationContainer>
-            <Tabs />
-        </NavigationContainer>
+        <View style={styles.container}>
+            {errorMsg ?
+                (<Error />)
+                :
+                (<ActivityIndicator size="large" color="tomato" />)
+            }
+        </View>
     )
 }
 

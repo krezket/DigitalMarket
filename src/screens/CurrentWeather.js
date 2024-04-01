@@ -5,11 +5,11 @@ import { weatherType } from '../utilities/weatherType';
 import RowText from '../components/rowText';
 
 
-const CurrentWeather = () => {
+const CurrentWeather = ({ weatherData }) => {
     const  {
         wrapper,
         container,
-        temp,
+        tempStyles,
         feels,
         highLowWrapper,
         highLow,
@@ -17,19 +17,23 @@ const CurrentWeather = () => {
         description,
         message
     } = styles
-    
+
+    const { main:{ temp, feels_like, temp_min, temp_max }, weather} = weatherData; 
+    const weatherCondition = weather[0]?.main;
+    console.log('conditions:',weatherCondition);
+
     return (
-        <SafeAreaView style={wrapper}>
+        <SafeAreaView style={[wrapper, { backgroundColor: weatherType[weatherCondition].backgroundColor}]}>
 
             <View style={container}>
-                <Feather name="sun" size={100} color="black" />
+                <Feather name={weatherType[weatherCondition].icon} size={100} color="white" />
 
-                <Text style={temp}>6</Text>
-                <Text style={feels}>Feels like 5</Text>
+                <Text style={tempStyles}>{Math.round(temp)}°F</Text>
+                <Text style={feels}>{`Feels like ${Math.round(feels_like)}°F`}</Text>
 
-                <RowText 
-                    messageOne={'yo'} 
-                    messageTwo={'bruh'} 
+                <RowText    
+                    messageOne={`High: ${Math.round(temp_max)}°F    `}	 
+                    messageTwo={`Low: ${Math.round(temp_min)}°F`} 
                     containerStyles={highLowWrapper} 
                     messageOneStyles={highLow} 
                     messageTwoStyles={highLow}
@@ -37,8 +41,8 @@ const CurrentWeather = () => {
             </View>
 
             <RowText 
-                    messageOne={'yo'} 
-                    messageTwo={weatherType['Thunderstorm'].message} 
+                    messageOne={weather[0]?.description} 
+                    messageTwo={weatherType[weatherCondition].message} 
                     containerStyles={bodyWrapper} 
                     messageOneStyles={description} 
                     messageTwoStyles={message}
@@ -58,7 +62,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    temp: {
+    tempStyles: {
         color: 'black',
         fontSize: 48,
     },
