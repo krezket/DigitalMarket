@@ -5,8 +5,8 @@ const Button = (props) => {
 
     const { text } = props;
 
-    const handleSignUp = () => {
-        console.log("Sign Up");
+    const handleSignUp = (text) => {
+
     }
 
     const { button } = styles;
@@ -21,10 +21,12 @@ const Button = (props) => {
 
 const styles = StyleSheet.create({
     button: {
-        display: "flex",
-        backgroundColor: "silver",
         padding: 5,
-        borderRadius: 5
+        width: 200,
+        borderRadius: 5,
+        display: "flex",
+        alignItems: "center",
+        backgroundColor: "silver",
     },
 }); 
 
