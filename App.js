@@ -6,12 +6,14 @@ import InitialScreen from "./src/screens/InitialScreens/InitialScreen";
 
 const App = () => {
     const [token, setToken] = useState(null);
-    
+
     if (token === null) {
         return (
-            <View style={styles.container}>
-                <InitialScreen />
-            </View>
+            <NavigationContainer>
+                <View style={styles.container}>
+                    <InitialScreen />
+                </View>
+            </NavigationContainer>
         );
     }
 
