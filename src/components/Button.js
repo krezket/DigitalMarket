@@ -9,9 +9,9 @@ const Button = (props) => {
 
     const handleSignUp = (text) => {
         if (text === "Sign Up") {
-            navigation.navigate({Signin});
+            navigation.navigate('Signin');
         } else if (text === "Log In") {
-            navigation.navigate({Login});
+            navigation.navigate('Login');
         }
 
         console.log(`Button with text ${text} has been pressed!`);
