@@ -1,6 +1,6 @@
 import { View, Text, Button, TextInput } from "react-native";
 
-const Signin = () => {
+const Signup = () => {
     return (
         <View>
             <TextInput></TextInput>
@@ -9,4 +9,4 @@ const Signin = () => {
     );
 }
 
-export default Signin;
+export default Signup;

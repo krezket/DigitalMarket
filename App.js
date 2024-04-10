@@ -1,25 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, ActivityIndicator, StyleSheet } from "react-native";
-import Tabs from "./src/components/Tabs";
-import InitialScreen from "./src/screens/InitialScreens/InitialScreen";
-import Signin from "./src/screens/InitialScreens/Signin";
+
 import { NavigationContainer } from "@react-navigation/native";
+import { SafeAreaView, ActivityIndicator, StyleSheet } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import Tabs from "./src/components/Tabs";
+import Signup from "./src/screens/InitialScreens/Signup";
+import Login from "./src/screens/InitialScreens/Login";
+import InitialScreen from "./src/screens/InitialScreens/InitialScreen";
+
+import { styles } from "./src/styles/AppStyles";
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-    const { container } = styles;
+    const { container, stackContainer } = styles;
     const [token, setToken] = useState(null);
 
     if (token === null) {
         return (
             <SafeAreaView style={container}>
-                <NavigationContainer style={container} >
-                    <Stack.Navigator>
+                <NavigationContainer >
+                    <Stack.Navigator style={stackContainer}>
                         <Stack.Screen name="InitialScreen" component={InitialScreen} />
-                        <Stack.Screen name="Signin" component={Signin} />
-
+                        <Stack.Screen name="Signup" component={Signup} />
+                        <Stack.Screen name="Login" component={Login} />
                     </Stack.Navigator>
                 </NavigationContainer>
             </SafeAreaView>
@@ -32,14 +37,5 @@ const App = () => {
         </NavigationContainer>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: "black"
-    }
-});
 
 export default App;
