@@ -7,7 +7,7 @@ import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-react";
 
 import Tabs from "./src/components/Tabs";
 import Signup from "./src/screens/InitialScreens/SignupScreens/Signup";
-import Login from "./src/screens/InitialScreens/Login";
+import Login from "./src/screens/InitialScreens/LoginScreens/Login";
 import InitialScreen from "./src/screens/InitialScreens/InitialScreen";
 
 import Constants from "expo-constants";
