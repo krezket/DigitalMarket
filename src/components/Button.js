@@ -5,6 +5,7 @@ import Login from "../screens/InitialScreens/Login";
 
 const Button = (props) => {
     const { text } = props;
+    console.log(text)
     const navigation = useNavigation();
 
     const handleSignUp = (text) => {
@@ -17,13 +18,13 @@ const Button = (props) => {
         console.log(`Button with text ${text} has been pressed!`);
     }
 
-    const { button } = styles;
+    const { button, buttonText } = styles;
     return (
         <Pressable
             onPress={() => {handleSignUp(text)}}
             style={button}
         >
-            <Text>{text}</Text>
+            <Text style={buttonText}>{text}</Text>
         </Pressable>
     );
 }
@@ -32,10 +33,17 @@ const styles = StyleSheet.create({
     button: {
         padding: 5,
         width: 200,
-        borderRadius: 5,
+        height: 50,
+        borderRadius: 10,
         display: "flex",
+        justifyContent: "center",
         alignItems: "center",
         backgroundColor: "silver",
+    },
+    buttonText: {
+        fontFamily: "Arial",
+        fontSize: 20,
+        color: "black",
     },
 }); 
 

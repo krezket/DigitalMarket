@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 
 import { NavigationContainer } from "@react-navigation/native";
-import { SafeAreaView, ActivityIndicator, StyleSheet } from "react-native";
+import { View, StatusBar, ActivityIndicator, StyleSheet } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-react";
 
 import Tabs from "./src/components/Tabs";
 import Signup from "./src/screens/InitialScreens/Signup";
 import Login from "./src/screens/InitialScreens/Login";
 import InitialScreen from "./src/screens/InitialScreens/InitialScreen";
+
+import Constants from "expo-constants";
 
 import { styles } from "./src/styles/AppStyles";
 
@@ -19,15 +22,16 @@ const App = () => {
 
     if (token === null) {
         return (
-            <SafeAreaView style={container}>
+            <View style={container}>
+                <StatusBar hidden={true} />
                 <NavigationContainer >
                     <Stack.Navigator style={stackContainer}>
-                        <Stack.Screen name="InitialScreen" component={InitialScreen} />
+                        <Stack.Screen name="InitialScreen" component={InitialScreen} options={{ headerShown: false }} />
                         <Stack.Screen name="Signup" component={Signup} />
                         <Stack.Screen name="Login" component={Login} />
                     </Stack.Navigator>
                 </NavigationContainer>
-            </SafeAreaView>
+            </View>
         );
     }
 
@@ -36,6 +40,6 @@ const App = () => {
             <Tabs />
         </NavigationContainer>
     );
-};
+}; 
 
 export default App;

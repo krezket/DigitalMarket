@@ -1,26 +1,31 @@
-import { SafeAreaView, View, Text, Pressable, StyleSheet } from "react-native";
+import { StatusBar, View, Text, Pressable, StyleSheet } from "react-native";
 import Button from "../../components/Button";
 
 const InitialScreen = () => {
 
-    const { container, button } = styles;
+    const { main, container, button } = styles;
     return (
-        <SafeAreaView>
+        <View style={main}>
+            <StatusBar hidden={true} />
+                <Text style={{ color: "white", fontSize: 30 }}>Welcome to the App!</Text>
             <View style={container}>
                 <Button text={'Sign Up'} />
                 <Button text={'Log In'} />
             </View>
-        </SafeAreaView>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
+    main: {
         flex: 1,
+        backgroundColor: "black",
+        justifyContent: "space-around",
+        alignItems: "center",
+    },
+    container: {
         gap: 20,
-        marginTop: 500,
-        justifyContent: "center",
-        alignItems: "center"
+        marginTop: 0,
     },
 });
 
