@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-react";
 
 import Tabs from "./src/components/Tabs";
-import Signup from "./src/screens/InitialScreens/Signup";
+import Signup from "./src/screens/InitialScreens/SignupScreens/Signup";
 import Login from "./src/screens/InitialScreens/Login";
 import InitialScreen from "./src/screens/InitialScreens/InitialScreen";
 
@@ -27,7 +27,7 @@ const App = () => {
                 <NavigationContainer >
                     <Stack.Navigator style={stackContainer}>
                         <Stack.Screen name="InitialScreen" component={InitialScreen} options={{ headerShown: false }} />
-                        <Stack.Screen name="Signup" component={Signup} />
+                        <Stack.Screen name="Signup" component={Signup} options={{title: 'Getting Started', headerBackTitle: 'Back'}} />
                         <Stack.Screen name="Login" component={Login} />
                     </Stack.Navigator>
                 </NavigationContainer>

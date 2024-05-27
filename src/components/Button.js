@@ -1,7 +1,5 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Signin from "../screens/InitialScreens/Signup";
-import Login from "../screens/InitialScreens/Login";
 
 const Button = (props) => {
     const { text } = props;
