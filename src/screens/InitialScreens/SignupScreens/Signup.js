@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, Button, TextInput, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, TextInput, StyleSheet } from "react-native";
 
 const Signup = () => {
     const [name, setName] = useState('');
-    const [password, setPassword] = useState('');
 
-    const { main, inputStyle } = styles;
+    const { main, buttonGray, buttonRed, inputStyle, buttonText } = styles;
 
     return (
         <View style={main}>
@@ -16,6 +15,13 @@ const Signup = () => {
                 onChangeText={setName}
                 placeholder="Name"
             />
+            <TouchableOpacity 
+                style={name === '' ? buttonGray : buttonRed} 
+                onPress={() => console.log(name)} 
+                disabled={name === ''}
+            >
+                <Text style={buttonText}>Next</Text>
+            </TouchableOpacity>
         </View>
     );
 }
@@ -25,6 +31,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        gap: 10,
     },
     inputStyle: {
         height: 40,
@@ -33,6 +40,19 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         marginTop: 10,
         paddingHorizontal: 10,
+    },
+    buttonGray: {
+        backgroundColor: 'gray',
+        padding: 10,
+        alignItems: 'center',
+    },
+    buttonRed: {
+        backgroundColor: 'red',
+        padding: 10,
+        alignItems: 'center',
+    },
+    buttonText: {
+        color: 'white',
     },
 });
 
