@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const Signup = () => {
     const [name, setName] = useState('');
 
     const { main, buttonGray, buttonRed, inputStyle, buttonText } = styles;
+
+    const navigation = useNavigation();
+
+    const handleNext = (text) => {
+        navigation.navigate('SignupDOB');
+
+    }
 
     return (
         <View style={main}>
@@ -17,7 +25,7 @@ const Signup = () => {
             />
             <TouchableOpacity 
                 style={name === '' ? buttonGray : buttonRed} 
-                onPress={() => console.log(name)} 
+                onPress={() => {handleNext(name)}} 
                 disabled={name === ''}
             >
                 <Text style={buttonText}>Next</Text>

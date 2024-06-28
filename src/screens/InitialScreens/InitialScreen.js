@@ -11,6 +11,7 @@ const InitialScreen = () => {
             <View style={container}>
                 <Button text={'Sign Up'} />
                 <Button text={'Log In'} />
+                <Button text={'Continue as Guest'} />
             </View>
         </View>
     );
