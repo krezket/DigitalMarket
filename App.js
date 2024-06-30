@@ -7,8 +7,15 @@ import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-react";
 
 import Tabs from "./src/components/Tabs";
 import Signup from "./src/screens/InitialScreens/SignupScreens/Signup";
+import SignupDOB from "./src/screens/InitialScreens/SignupScreens/SignupDOB";
+import SignupNumber from "./src/screens/InitialScreens/SignupScreens/SignupNumber";
 import Login from "./src/screens/InitialScreens/LoginScreens/Login";
 import InitialScreen from "./src/screens/InitialScreens/InitialScreen";
+
+import Home from "./src/screens/Home";
+import Search from "./src/screens/Search";
+import Notifications from "./src/screens/Notifications";
+import Account from "./src/screens/Account";
 
 import Constants from "expo-constants";
 
@@ -26,9 +33,16 @@ const App = () => {
                 <StatusBar hidden={true} />
                 <NavigationContainer >
                     <Stack.Navigator style={stackContainer}>
-                        <Stack.Screen name="InitialScreen" component={InitialScreen} options={{ headerShown: false }} />
+                        <Stack.Screen name="InitialScreen" options={{ headerShown: false }} >
+                            {props => <InitialScreen {...props} setToken={setToken} />}
+                        </Stack.Screen>
+
                         <Stack.Screen name="Signup" component={Signup} options={{title: 'Getting Started', headerBackTitle: 'Back'}} />
+                        <Stack.Screen name="SignupDOB" component={SignupDOB} options={{title: 'Date of Birth', headerBackTitle: 'Back'}} />
+                        <Stack.Screen name="SignupNumber" component={SignupNumber} options={{title: 'Phone Number', headerBackTitle: 'Back'}} />
+                        
                         <Stack.Screen name="Login" component={Login} />
+
                     </Stack.Navigator>
                 </NavigationContainer>
             </View>

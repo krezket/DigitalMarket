@@ -7,11 +7,24 @@ const Button = (props) => {
     const navigation = useNavigation();
 
     const handleSignUp = (text) => {
-        if (text === "Sign Up") {
-            navigation.navigate('Signup');
-        } else if (text === "Log In") {
-            navigation.navigate('Login');
-        }
+        text === "Sign Up" 
+        ? 
+        navigation.navigate('Signup') 
+        :
+        text === "Log In"
+        ? 
+        navigation.navigate('Login')
+        :
+        text === "Continue as Guest"
+        ?
+        setToken("guest")
+        :
+        console.log("Button not recognized");
+        // if (text === "Sign Up") {
+        //     navigation.navigate('Signup');
+        // } else if (text === "Log In") {
+        //     navigation.navigate('Login');
+        // }
 
         console.log(`Button with text ${text} has been pressed!`);
     }
@@ -30,19 +43,18 @@ const Button = (props) => {
 const styles = StyleSheet.create({
     button: {
         padding: 5,
-        width: 200,
-        height: 50,
-        borderRadius: 10,
+        width: 350, 
+        height: 40,
+        borderRadius: 0,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "silver",
+        backgroundColor: "gray",
     },
     buttonText: {
-        fontFamily: "Arial",
         fontSize: 20,
-        color: "black",
+        color: "white",
     },
-}); 
+});
 
 export default Button;
