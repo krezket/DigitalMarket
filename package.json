@@ -15,7 +15,11 @@
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
+<<<<<<< HEAD
     "expo": "^51.0.16",
+=======
+    "expo": "^51.0.14",
+>>>>>>> 285b01bee1a1c1e6c1dcc6afb7dc791e431e130f
     "expo-constants": "^16.0.2",
     "expo-location": "~17.0.1",
     "expo-status-bar": "~1.12.1",
