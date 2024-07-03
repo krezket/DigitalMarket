@@ -1,6 +1,6 @@
 import { StatusBar, View, Text, Pressable, StyleSheet, ImageBackground } from "react-native";
 import Button from "../../components/Button";
-import dragon from "../../../assets/gifs/SILVER.gif"
+import dragon from "../../../assets/gifs/SILVER.gif";
 
 const InitialScreen = (props) => {
     console.log(props);
