@@ -20,7 +20,7 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
     const { container, stackContainer } = styles;
-    const user = false;
+    const [user, setUser] = useState(false);
 
     return (
         <View style={container}>

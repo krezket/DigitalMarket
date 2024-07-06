@@ -17,7 +17,7 @@ const Button = (props) => {
         :
         text === "Continue as Guest"
         ?
-        setToken("guest")
+        setUser(true)
         :
         console.log("Button not recognized");
         // if (text === "Sign Up") {
