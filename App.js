@@ -4,23 +4,21 @@ import { View, StatusBar, ActivityIndicator, StyleSheet } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-react";
 
-import StackNavigator from "./src/StackNavigator";
+import StackNav from "./src/StackNav";
 import Constants from "expo-constants";
 import { styles } from "./src/styles/AppStyles";
-import useAuth, { AuthProvider } from "./src/hooks/useAuth";
+import { AuthProvider } from "./src/hooks/useAuth";
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-    const { user } = useAuth();
-    const { container, stackContainer } = styles;
-
+    const { container } = styles;
     return (
         <View style={container}>
             <StatusBar hidden={true} />
             <NavigationContainer >
                 <AuthProvider>
-                    <StackNavigator />
+                    <StackNav />
                 </AuthProvider>
             </NavigationContainer>
         </View>

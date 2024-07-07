@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "42546814637",
+    "project_id": "digital-market-2ab37",
+    "storage_bucket": "digital-market-2ab37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42546814637:android:dd66c1a2fe79c6d23db024",
+        "android_client_info": {
+          "package_name": "host.exp.exponent"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcFTZh1VaVosUMZTmc4uO2Bh_ScgcZ2lE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

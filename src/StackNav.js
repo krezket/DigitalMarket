@@ -7,9 +7,16 @@ import SignupDOB from "./screens/InitialScreens/SignupScreens/SignupDOB";
 import SignupNumber from "./screens/InitialScreens/SignupScreens/SignupNumber";
 import Login from "./screens/InitialScreens/LoginScreens/Login";
 import InitialScreen from "./screens/InitialScreens/InitialScreen";
+import useAuth from "./hooks/useAuth";
+
+import { styles } from "./styles/AppStyles";
+
 
 const Stack = createNativeStackNavigator();
-const StackNavigator = () => {
+const StackNav = () => {
+    const { stackContainer } = styles;
+    const { user } = useAuth();
+
     return (
         <Stack.Navigator style={stackContainer}>
             {user ?
@@ -30,4 +37,4 @@ const StackNavigator = () => {
     )
 }
 
-export default StackNavigator
+export default StackNav
