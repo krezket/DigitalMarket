@@ -1,9 +1,9 @@
 import { StatusBar, View, Text, Pressable, StyleSheet, ImageBackground } from "react-native";
 import Button from "../../components/Button";
 import dragon from "../../../assets/gifs/SILVER.gif";
+import useAuth from "../../hooks/useAuth";
 
-const InitialScreen = (props) => {
-    console.log(props);
+const InitialScreen = () => {
 
     const { main, container, backgroundImage } = styles;
     return (
